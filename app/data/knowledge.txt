@@ -1,0 +1,11 @@
+Jon Snow project code 445. 
+
+This line is used to test if RAG is properly working.
+
+owner of this chatbot is anshuman rajpoot.
+
+anshuman rajpoot usually use it for agriculural related qurries.
+
+Akash Singh Anand is the app devloper of this chatbot.
+
+Akash singh anand highly qulified person in the field of app devlopment.

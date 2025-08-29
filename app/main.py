@@ -1,6 +1,10 @@
 from __future__ import annotations
 import os
+<<<<<<< HEAD
 from fastapi import FastAPI
+=======
+from fastapi import FastAPI, Request
+>>>>>>> c286ca28f3e3124d2c7c009cf2988c7d6b8edd48
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
@@ -10,12 +14,18 @@ from dotenv import load_dotenv
 from .memory import MemoryStore
 from .providers import EchoProvider, OpenAIProvider, OllamaProvider
 
+<<<<<<< HEAD
 # 🔹 Import RAG
 from .rag import RAG
 
 load_dotenv()
 
 app = FastAPI(title="AgroMitra Chatbot")
+=======
+load_dotenv()
+
+app = FastAPI(title="My Chatbot")
+>>>>>>> c286ca28f3e3124d2c7c009cf2988c7d6b8edd48
 
 # CORS (open by default; tighten for production)
 app.add_middleware(
@@ -30,7 +40,10 @@ app.add_middleware(
 static_dir = os.path.join(os.path.dirname(__file__), "..", "static")
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
+<<<<<<< HEAD
 # Schemas
+=======
+>>>>>>> c286ca28f3e3124d2c7c009cf2988c7d6b8edd48
 class ChatRequest(BaseModel):
     message: str
     session_id: str
@@ -38,11 +51,16 @@ class ChatRequest(BaseModel):
 class ClearRequest(BaseModel):
     session_id: str
 
+<<<<<<< HEAD
 # Global memory + RAG
 memory = MemoryStore()
 rag = RAG()  # will use knowledge.txt internally
 
 # Provider selection
+=======
+memory = MemoryStore()
+
+>>>>>>> c286ca28f3e3124d2c7c009cf2988c7d6b8edd48
 def get_provider_name() -> str:
     return os.getenv("PROVIDER", "echo").lower()
 
@@ -54,7 +72,10 @@ def get_provider():
         return OllamaProvider()
     return EchoProvider()
 
+<<<<<<< HEAD
 # Routes
+=======
+>>>>>>> c286ca28f3e3124d2c7c009cf2988c7d6b8edd48
 @app.get("/")
 def root():
     index_path = os.path.join(static_dir, "index.html")
@@ -65,6 +86,7 @@ def chat(req: ChatRequest):
     provider = get_provider()
     history = memory.get_history(req.session_id)
 
+<<<<<<< HEAD
     # Store user message
     memory.append(req.session_id, "user", req.message)
 
@@ -103,6 +125,21 @@ def chat(req: ChatRequest):
         # 🔹 Optional: return RAG docs to frontend for testing
         "rag_docs": [r["doc"] if isinstance(r, dict) else str(r) for r in results]
     })
+=======
+    # Append user message
+    memory.append(req.session_id, "user", req.message)
+
+    # Generate reply
+    try:
+        reply = provider.generate(history=history, user_message=req.message)
+    except Exception as e:
+        reply = f"Provider error: {e}"
+
+    # Append assistant reply
+    memory.append(req.session_id, "assistant", reply)
+
+    return JSONResponse({"reply": reply})
+>>>>>>> c286ca28f3e3124d2c7c009cf2988c7d6b8edd48
 
 @app.post("/api/clear")
 def clear(req: ClearRequest):

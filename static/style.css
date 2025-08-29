@@ -1,19 +1,29 @@
+<<<<<<< HEAD
 .app {
+=======
+.app{
+>>>>>>> c286ca28f3e3124d2c7c009cf2988c7d6b8edd48
   max-width: 840px;
   margin: 20px auto;
   padding: 16px;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+<<<<<<< HEAD
   display: flex;
   flex-direction: column;
   height: 90vh;
 }
 
 header {
+=======
+}
+header{
+>>>>>>> c286ca28f3e3124d2c7c009cf2988c7d6b8edd48
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
 }
+<<<<<<< HEAD
 
 #messages {
   flex: 1;
@@ -74,10 +84,32 @@ header {
 
 /* Chat input */
 #chat-form {
+=======
+#messages{
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px;
+  min-height: 300px;
+  max-height: 65vh;
+  overflow-y: auto;
+  background: #fafafa;
+}
+.msg{
+  margin: 10px 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+}
+.msg.user{ background: #dbeafe; align-self: flex-end; }
+.msg.assistant{ background: #e5e7eb; }
+#chat-form{
+>>>>>>> c286ca28f3e3124d2c7c009cf2988c7d6b8edd48
   display: flex;
   gap: 8px;
   margin-top: 12px;
 }
+<<<<<<< HEAD
 
 #input {
   flex: 1;
@@ -106,3 +138,8 @@ button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
+=======
+#input{ flex: 1; padding: 10px 12px; border-radius: 8px; border: 1px solid #d1d5db; }
+button{ padding: 10px 16px; border-radius: 8px; border: none; background: #111827; color: white; cursor: pointer; }
+button:disabled{ opacity: 0.6; cursor: not-allowed; }
+>>>>>>> c286ca28f3e3124d2c7c009cf2988c7d6b8edd48
